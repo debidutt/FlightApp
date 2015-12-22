@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<demo.fly.app.core.ScreenSwitcherFrame xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
+    android:background="@color/colorAccent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+</demo.fly.app.core.ScreenSwitcherFrame>

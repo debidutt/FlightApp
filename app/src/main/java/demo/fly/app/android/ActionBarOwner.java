@@ -17,6 +17,7 @@ import static mortar.bundler.BundleService.getBundleService;
  * Created by x086541 on 12/22/2015.
  */
 public class ActionBarOwner extends Presenter<ActionBarOwner.Activity> {
+
     public interface Activity {
         void setShowHomeEnabled(boolean enabled);
 
@@ -35,8 +36,7 @@ public class ActionBarOwner extends Presenter<ActionBarOwner.Activity> {
         public final CharSequence title;
         public final MenuAction action;
 
-        public Config(boolean showHomeEnabled, boolean upButtonEnabled, CharSequence title,
-                      MenuAction action) {
+        public Config(boolean showHomeEnabled, boolean upButtonEnabled, CharSequence title, MenuAction action) {
             this.showHomeEnabled = showHomeEnabled;
             this.upButtonEnabled = upButtonEnabled;
             this.title = title;
@@ -63,8 +63,10 @@ public class ActionBarOwner extends Presenter<ActionBarOwner.Activity> {
     ActionBarOwner() {
     }
 
-    @Override public void onLoad(Bundle savedInstanceState) {
-        if (config != null) update();
+    @Override
+    public void onLoad(Bundle savedInstanceState) {
+        if (config != null)
+            update();
     }
 
     public void setConfig(Config config) {
@@ -76,12 +78,14 @@ public class ActionBarOwner extends Presenter<ActionBarOwner.Activity> {
         return config;
     }
 
-    @Override protected BundleService extractBundleService(Activity activity) {
+    @Override
+    protected BundleService extractBundleService(Activity activity) {
         return getBundleService(activity.getContext());
     }
 
     private void update() {
-        if (!hasView()) return;
+        if (!hasView())
+            return;
         Activity activity = getView();
 
         activity.setShowHomeEnabled(config.showHomeEnabled);

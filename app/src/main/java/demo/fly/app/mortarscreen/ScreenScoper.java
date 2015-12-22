@@ -24,7 +24,7 @@ import static java.lang.String.format;
 public class ScreenScoper {
     private static final ModuleFactory NO_FACTORY = new ModuleFactory() {
         @Override
-        protected Object createDaggerModule(Resources resources, Object screen) {
+        public Object createDaggerModule(Resources resources, Object screen) {
             throw new UnsupportedOperationException();
         }
     };
@@ -141,7 +141,7 @@ public class ScreenScoper {
         }
 
         @Override
-        protected Object createDaggerModule(Resources resources, Object ignored) {
+        public Object createDaggerModule(Resources resources, Object ignored) {
             try {
                 return moduleConstructor.newInstance();
             }
@@ -159,7 +159,7 @@ public class ScreenScoper {
         }
 
         @Override
-        protected Object createDaggerModule(Resources resources, Object screen) {
+        public Object createDaggerModule(Resources resources, Object screen) {
             try {
                 return moduleConstructor.newInstance(screen);
             }

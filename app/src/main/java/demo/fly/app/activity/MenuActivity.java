@@ -1,16 +1,13 @@
 package demo.fly.app.activity;
 
+import javax.inject.Inject;
+import mortar.MortarScope;
+import rx.functions.Action0;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.google.gson.Gson;
-
-import javax.inject.Inject;
-
 import demo.fly.app.android.ActionBarOwner;
 import demo.fly.app.core.R;
 import demo.fly.app.page.GsonParceler;
@@ -18,11 +15,8 @@ import demo.fly.app.page.HandlesBack;
 import demo.fly.app.page.MenuPage;
 import flow.Flow;
 import flow.FlowDelegate;
-import flow.History;
 import flow.path.Path;
 import flow.path.PathContainerView;
-import mortar.MortarScope;
-import rx.functions.Action0;
 
 public class MenuActivity extends android.app.Activity implements ActionBarOwner.Activity, Flow.Dispatcher {
 
@@ -39,7 +33,7 @@ public class MenuActivity extends android.app.Activity implements ActionBarOwner
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        actionBarOwner.takeView(this);
+//        actionBarOwner.takeView(this);
 
         FlowDelegate.NonConfigurationInstance nonConfig = (FlowDelegate.NonConfigurationInstance) getLastNonConfigurationInstance();
         GsonParceler parceler = new GsonParceler(new Gson());
@@ -47,25 +41,26 @@ public class MenuActivity extends android.app.Activity implements ActionBarOwner
         setContentView(R.layout.root_layout);
         container = (PathContainerView) findViewById(R.id.container);
         containerAsHandlesBack = (HandlesBack) container;
-        flowDelegate = FlowDelegate.onCreate(nonConfig, getIntent(), savedInstanceState, parceler, History.single(new ChatListScreen()), this);
+        //TODO Main Menu : Next Screen
+//        flowDelegate = FlowDelegate.onCreate(nonConfig, getIntent(), savedInstanceState, parceler, History.single(new FlightStatusPage()), this);
 
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        flowDelegate.onNewIntent(intent);
+//        flowDelegate.onNewIntent(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        flowDelegate.onResume();
+//        flowDelegate.onResume();
     }
 
     @Override
     protected void onPause() {
-        flowDelegate.onPause();
+//        flowDelegate.onPause();
         super.onPause();
     }
 
